@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EPA 608 Study App</title>
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>EPA 608 Study App</h1>
+    <button id="loginBtn" class="btn ghost">Sign in</button>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="cards">Flashcards</button>
+    <button class="tab" data-tab="quiz">Quiz</button>
+    <button class="tab" data-tab="test">Test</button>
+    <button class="tab" data-tab="guide">Study Guide</button>
+  </nav>
+
+  <!-- FLASHCARDS -->
+  <section id="cards" class="panel active">
+    <div class="controls">
+      <select id="deckSel"></select>
+      <select id="diffSel">
+        <option value="all">All Difficulty</option>
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+      <input id="searchBox" placeholder="Search questions..." />
+    </div>
+
+    <div id="cardMeta" class="meta"></div>
+
+    <div id="flipCard" class="flip">
+      <div id="flipInner" class="flipInner">
+        <div class="flipFace front">
+          <span class="tag">FLASHCARD</span>
+          <p id="qText"></p>
+          <small>Tap to flip</small>
+        </div>
+        <div class="flipFace back">
+          <span class="tag">ANSWER</span>
+          <div id="fcOpts"></div>
+          <div id="aText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <button id="prevBtn" class="btn">Prev</button>
+      <button id="nextBtn" class="btn">Next</button>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="panel">
+    <h2>Practice Quiz</h2>
+    <div class="controls">
+      <select id="quizDeckSel"></select>
+      <select id="quizStyleSel">
+        <option value="mixed">Mixed</option>
+        <option value="adaptive">Adaptive</option>
+        <option value="numbers">Rules / Numbers</option>
+        <option value="concepts">Concepts</option>
+      </select>
+      <input type="number" id="quizLen" value="20" min="5" max="50" />
+      <button id="startQuizBtn" class="btn primary">Start Quiz</button>
+    </div>
+
+    <div id="quizArea"></div>
+  </section>
+
+  <!-- TEST -->
+  <section id="test" class="panel">
+    <h2>Exam Simulator</h2>
+    <div class="controls">
+      <select id="testSectionSel">
+        <option value="core">Core</option>
+        <option value="type1">Type I</option>
+        <option value="type2">Type II</option>
+        <option value="type3">Type III</option>
+        <option value="universal">Universal (100 Q)</option>
+      </select>
+      <button id="startTestBtn" class="btn danger">Start Test</button>
+    </div>
+
+    <div id="testArea"></div>
+  </section>
+
+  <!-- STUDY GUIDE -->
+  <section id="guide" class="panel">
+    <h2>Study Guide</h2>
+    <div id="guideContent"></div>
+    <p class="meta">
+      <a href="https://www.epa.gov/section608" target="_blank">EPA Official 608 Page</a>
+    </p>
+  </section>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
